@@ -1,0 +1,37 @@
+﻿@model Assignment2tennis.Models.ScheduleMembers
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ScheduleMembers</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduleId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ScheduleId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MemberEmail)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        }
+    }
+    <a asp-action="Index">Back to List</a>
+</div>

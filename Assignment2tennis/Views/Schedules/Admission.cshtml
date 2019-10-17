@@ -1,0 +1,49 @@
+﻿@model Assignment2tennis.Models.Schedule
+@{
+    ViewData["Title"] = "Enrol";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Enrol</h2>
+<h3>Are you sure you want to Enrol with this coach? If yes, click on admission</h3>
+<div>
+    <h4>Enroll</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.When)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.When)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CoachEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CoachEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+    </dl>
+    <form asp-action="Admission">
+
+        <input type="hidden" asp-for="Id" name="ScheduleId" />
+        <input type="submit" value="Admission" class="btn btn-default" />
+        <a asp-action="Index" class="btn btn-default">Back</a>
+    </form>
+</div>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Assignment2tennis.Models.ScheduleMembers>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduleId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberEmail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScheduleId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MemberEmail)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                </td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-default">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-default"> Delete </a>
+
+                        </td>
+                    }
+                }
+            </tr>
+        }
+    </tbody>
+</table>
